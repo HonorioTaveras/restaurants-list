@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 const path = require('path');
 
 const DIST_DIR = path.resolve(__dirname, 'public');
@@ -20,14 +21,15 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/i,
         use: [
           'style-loader',
+          'css-loader',
           {
-            loader: 'css-loader',
+            loader: 'sass-loader',
             options: {
-              importLoaders: 1,
-              modules: true,
+              // Prefer `dart-sass`
+              implementation: require('sass'),
             },
           },
         ],
@@ -39,6 +41,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx'],
   },
 };
