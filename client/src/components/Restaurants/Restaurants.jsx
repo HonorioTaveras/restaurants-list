@@ -28,9 +28,11 @@ const Restaurants = () => {
           <span>Genres</span>
         </div>
       </div>
-      {restaurantData.map((restaurant) => (
-        <RestaurantItem key={restaurant.id} restaurant={restaurant} />
-      ))}
+      {restaurantData
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((restaurant) => (
+          <RestaurantItem key={restaurant.id} restaurant={restaurant} />
+        ))}
     </div>
   );
 };
