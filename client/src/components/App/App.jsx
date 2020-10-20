@@ -1,5 +1,13 @@
 import React from 'react';
 
-export default function App() {
-  return <div>Hello from restaurant list</div>;
-}
+import Restaurants from '../Restaurants/Restaurants';
+
+import './App.scss';
+
+const App = () => (
+  <div>
+    <Restaurants />
+  </div>
+);
+
+export default App;
