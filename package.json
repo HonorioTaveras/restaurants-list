@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "react-dev": "webpack -d --watch",
+    "start": "nodemon server/index.js",
+    "server": "node server/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HonorioTaveras/restaurants-list.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Honorio Taveras",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/HonorioTaveras/restaurants-list/issues"
@@ -45,7 +47,7 @@
     "fibers": "^5.0.0",
     "file-loader": "^6.1.1",
     "style-loader": "^2.0.0",
-    "webpack": "^5.1.3",
-    "webpack-cli": "^4.1.0"
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   }
 }
