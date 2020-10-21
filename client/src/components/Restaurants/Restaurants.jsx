@@ -1,10 +1,11 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 
 import uniq from 'lodash.uniq';
 
 import './Restaurants.scss';
 
-const Restaurants = ({ restaurantData }) => {
+const Restaurants = ({ restaurantData, filterStateHandler }) => {
   const uniqStates = uniq(restaurantData.map(({ state }) => state));
 
   console.log('states: ', uniqStates);
@@ -15,12 +16,12 @@ const Restaurants = ({ restaurantData }) => {
         <th>City</th>
         <th>
           <label>State &nbsp;</label>
-          <select>
-            {
-              uniqStates.map((state) => (
-                <option value={state}>{state}</option>
-              ))
-            }
+          <select onChange={(e) => filterStateHandler(e.target.value)}>
+            {uniqStates.map((state, idx) => (
+              <option key={idx} value={state}>
+                {state}
+              </option>
+            ))}
           </select>
         </th>
         <th>Telephone</th>
@@ -31,4 +32,3 @@ const Restaurants = ({ restaurantData }) => {
 };
 
 export default Restaurants;
-
