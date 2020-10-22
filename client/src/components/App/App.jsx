@@ -13,9 +13,7 @@ const App = () => {
   const [restaurantData] = useState(RESTAURANT_DATA);
   // eslint-disable-next-line no-unused-vars
   const [stateCategories, setStateCetegories] = useState('all');
-  const [states] = useState(
-    uniq(restaurantData.map(({ state }) => state)),
-  );
+  const [states] = useState(uniq(restaurantData.map(({ state }) => state)));
   // eslint-disable-next-line prefer-const
   let [filteredRestaurantData, setFilteredRestaurantData] = useState([]);
 
@@ -30,6 +28,13 @@ const App = () => {
     setStateCetegories(filterState);
     setFilteredRestaurantData(filteredRestaurantData);
   };
+
+  const filteredGenreData = [];
+  const restaurantDataCopy = restaurantData.slice();
+  restaurantDataCopy.map(({ genre }) => filteredGenreData.push(genre.split(',')));
+  const joinedFilteredGenreData = filteredGenreData.join(',').split(',');
+
+  console.log('genresList: ', uniq(joinedFilteredGenreData));
 
   return (
     <div>

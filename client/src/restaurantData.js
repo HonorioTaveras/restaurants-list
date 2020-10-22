@@ -11,7 +11,7 @@ const RESTAURANT_DATA = [
     telephone: '(301) 965-4000',
     tags: 'Social,Food and Dining,Restaurants,Steakhouses',
     website: 'http://www.gaylordnational.com',
-    genre: 'Steak, American, Contemporary, Seafood, Cafe',
+    genre: 'Steak,American,Contemporary,Seafood,Cafe',
     hours: 'Open Daily 5:30 PM-10:00 PM',
     attire: 'business casual',
   },
@@ -28,7 +28,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Japanese,Social,Food and Dining,Restaurants,Sushi',
     website: 'http://www.matsuhisaaspen.com',
-    genre: 'Japanese, Sushi, Asian, Contemporary, Seafood',
+    genre: 'Japanese,Sushi,Asian,Contemporary,Seafood',
     hours: 'Open Daily 5:30 PM-9:00 PM',
     attire: 'business casual',
   },
@@ -44,7 +44,7 @@ const RESTAURANT_DATA = [
     telephone: '(434) 971-7800',
     tags: 'Social,Food and Dining,Restaurants,French',
     website: 'http://www.fleurierestaurant.com',
-    genre: 'French, European, Cafe, Continental, American',
+    genre: 'French,European,Cafe,Continental,American',
     hours: 'Mon-Thu 5:30 PM-9:00 PM; Fri-Sat 5:30 PM-10:00 PM',
     attire: 'business casual',
   },
@@ -61,7 +61,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Steakhouses,Social,Food and Dining,Restaurants,American',
     website: 'http://www.thecapitalgrille.com',
-    genre: 'Steak, American',
+    genre: 'Steak,American',
     hours:
       'Mon-Thu 11:00 AM-10:00 PM; Fri 11:00 AM-11:00 PM; Sat 5:00 PM-11:00 PM; Sun 5:00 PM-9:00 PM',
     attire: 'business casual',
@@ -79,7 +79,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Seafood,Social,Food and Dining,Restaurants,American',
     website: 'http://www.bostonlobsterfeast.com',
-    genre: 'Seafood, International, American, Oysters, Cafe',
+    genre: 'Seafood,International,American,Oysters,Cafe',
     hours: 'Mon-Fri 4:00 PM-10:00 PM; Sat-Sun 2:00 PM-10:00 PM',
     attire: 'Casual',
   },
@@ -95,7 +95,7 @@ const RESTAURANT_DATA = [
     telephone: '(207) 967-6550',
     tags: 'Social,Food and Dining,Restaurants,American,Social,Bars',
     website: 'http://www.earthathiddenpond.com',
-    genre: 'American, Contemporary',
+    genre: 'American,Contemporary',
     hours: 'Open Daily 5:30 PM-9:30 PM',
     attire: 'Casual',
   },
@@ -112,7 +112,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Steakhouses,Social,Food and Dining,Restaurants,American',
     website: 'http://www.thecapitalgrille.com',
-    genre: 'Steak, American',
+    genre: 'Steak,American',
     hours:
       'Mon-Thu 11:00 AM-10:00 PM; Fri 11:00 AM-11:00 PM; Sat 5:00 PM-11:00 PM; Sun 5:00 PM-9:00 PM',
     attire: 'business casual',
@@ -130,7 +130,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Steakhouses,Social,Food and Dining,Restaurants,Seafood,Social,Food and Dining,Restaurants,American',
     website: 'http://www.677prime.com',
-    genre: 'Steak, American, Seafood, International, Traditional',
+    genre: 'Steak,American,Seafood,International,Traditional',
     hours: 'Mon-Fri 11:30 AM-10:00 PM; Sat 5:30 PM-10:00 PM',
     attire: 'business casual',
   },
@@ -146,7 +146,7 @@ const RESTAURANT_DATA = [
     telephone: '(808) 667-5353',
     tags: 'Social,Food and Dining,Restaurants,International',
     website: 'http://www.feastatlele.com',
-    genre: 'Hawaiian, Polynesian, Pacific Rim,Cafe, Vietnamese',
+    genre: 'Hawaiian,Polynesian,Pacific Rim,Cafe,Vietnamese',
     hours: 'Open Daily 5:30 PM-8:30 PM',
     attire: 'business casual',
   },
@@ -163,7 +163,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Italian,Social,Food and Dining,Cafes,Coffee and Tea Houses',
     website: 'http://www.cafeciminocountryinn.com',
-    genre: 'Cafe, Italian, Bistro, Contemporary, Vegetarian',
+    genre: 'Cafe,Italian,Bistro,Contemporary,Vegetarian',
     hours: 'Tue 4:00 PM-9:00 PM; Wed-Sat 5:00 PM-9:00 PM',
     attire: 'business casual',
   },
@@ -180,7 +180,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,French,Social,Food and Dining,Restaurants,Seafood',
     website: 'http://www.halekulani.com/dining/la_mer/',
-    genre: 'French, Hawaiian, Seafood, European, Vegetarian',
+    genre: 'French,Hawaiian,Seafood,European,Vegetarian',
     hours: 'Open Daily 5:30 PM-9:30 PM',
     attire: 'formal',
   },
@@ -215,7 +215,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Steakhouses,Social,Food and Dining,Restaurants,American',
     website: 'http://www.bonaventureresortandspa.com/restaurants_and_lounges/',
-    genre: 'Steak, American, Seafood, Irish, Cafe',
+    genre: 'Steak,American,Seafood,Irish,Cafe',
     hours: 'Tue-Sat 5:30 PM-10:30 PM',
     attire: 'casual',
   },
@@ -232,7 +232,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,American,Social,Food and Dining,Restaurants,Seafood',
     website: 'http://www.achefskitchen.biz',
-    genre: 'American, Seafood, International, Asian, Cafe',
+    genre: 'American,Seafood,International,Asian,Cafe',
     hours: 'Tue-Sat 10:00 AM-5:30 PM',
     attire: 'business casual',
   },
@@ -248,7 +248,7 @@ const RESTAURANT_DATA = [
     telephone: '(828) 898-5395',
     tags: 'Social,Food and Dining,Restaurants,American',
     website: 'http://www.artisanalnc.com',
-    genre: 'American, Contemporary',
+    genre: 'American,Contemporary',
     hours: 'Tue-Sun 5:30 PM-10:00 PM',
     attire: 'business casual',
   },
@@ -265,7 +265,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Italian,Social,Food and Dining,Restaurants,American',
     website: 'http://lulous.restaurantwebexpert.com',
-    genre: 'Italian, American, Contemporary, European, International',
+    genre: 'Italian,American,Contemporary,European,International',
     hours: 'Tue-Sat 5:00 PM-8:30 PM',
     attire: 'business casual',
   },
@@ -299,7 +299,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,French,Social,Food and Dining,Restaurants,Seafood,Social,Food and Dining,Restaurants,International',
     website: 'http://www.antoinessarasota.com',
-    genre: 'European, French, Seafood, Belgian, Vegetarian',
+    genre: 'European,French,Seafood,Belgian,Vegetarian',
     hours: 'Mon-Sat 5:00 PM-9:00 PM',
     attire: 'casual',
   },
@@ -316,7 +316,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Steakhouses,Social,Food and Dining,Restaurants,American',
     website: 'http://www.thecapitalgrille.com',
-    genre: 'Steak, American',
+    genre: 'Steak,American',
     hours:
       'Mon-Thu 11:30 AM-10:00 PM; Fri 11:30 AM-11:00 PM; Sat 5:00 PM-11:00 PM; Sun 5:00 PM-10:00 PM',
     attire: 'business casual',
@@ -334,7 +334,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Sushi,Social,Food and Dining,Restaurants,Japanese',
     website: 'http://www.uchiaustin.com',
-    genre: 'Japanese, Sushi, Asian, Seafood, American',
+    genre: 'Japanese,Sushi,Asian,Seafood,American',
     hours:
       'Mon-Thu 5:00 PM-10:00 PM; Fri-Sat 5:00 PM-11:00 PM; Sun 5:00 PM-10:00 PM',
     attire: 'smart casual',
@@ -352,7 +352,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Seafood,Social,Food and Dining,Restaurants,Steakhouses',
     website: 'http://www.trulucks.com',
-    genre: 'Seafood, Steak, American',
+    genre: 'Seafood,Steak,American',
     hours:
       'Mon-Thu 5:00 PM-10:00 PM; Fri-Sat 5:00 PM-11:00 PM; Sun 5:00 PM-9:00 PM',
     attire: 'business casual',
@@ -369,7 +369,7 @@ const RESTAURANT_DATA = [
     telephone: '(843) 727-0090',
     tags: 'Social,Food and Dining,Restaurants',
     website: 'http://hallschophouse.com/',
-    genre: 'American, Contemporary, Steak',
+    genre: 'American,Contemporary,Steak',
     hours:
       'Mon-Fri 12:00 AM-2:00 AM, 4:00 PM-11:59 PM; Sat 12:00 AM-2:00 AM, 11:00 AM-2:00 PM, 4:00 PM-11:59 PM; Sun 12:00 AM-2:00 AM, 10:00 AM-11:59 PM',
     attire: 'business casual',
@@ -387,7 +387,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,American,Social,Food and Dining,Restaurants,French',
     website: 'http://www.companyofthecauldron.com',
-    genre: 'American, Contemporary, Seafood, Continental, Traditional',
+    genre: 'American,Contemporary,Seafood,Continental,Traditional',
     hours:
       'Mon 7:00 PM-10:00 PM; Tue-Sat 6:00 PM-11:00 PM; Sun 7:00 PM-10:00 PM',
     attire: 'business casual',
@@ -405,7 +405,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Seafood,Social,Food and Dining,Restaurants,American,Social,Food and Dining,Restaurants,Steakhouses',
     website: 'http://www.thebouldersrestaurant.com',
-    genre: 'American, Cafe, Steak, Seafood, Eclectic',
+    genre: 'American,Cafe,Steak,Seafood,Eclectic',
     hours: 'Open Daily 5:00 PM-9:00 PM',
     attire: 'casual',
   },
@@ -421,7 +421,7 @@ const RESTAURANT_DATA = [
     telephone: '(814) 623-2703',
     tags: 'Social,Food and Dining,Restaurants,Italian',
     website: 'http://www.italianfoodandstyle.com',
-    genre: 'Italian, Contemporary, Pasta, Kosher',
+    genre: 'Italian,Contemporary,Pasta,Kosher',
     hours:
       'Mon 11:00 AM-3:00 PM; Tue-Thu 10:00 AM-4:00 PM; Fri-Sat 7:30 PM-10:00 PM; Sun 11:00 AM-3:00 PM',
     attire: 'business casual',
@@ -439,7 +439,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Steakhouses,Social,Food and Dining,Restaurants,American',
     website: 'http://www.mandalaybay.com',
-    genre: 'Steak, American, Seafood, Continental, Contemporary',
+    genre: 'Steak,American,Seafood,Continental,Contemporary',
     hours: 'Open Daily 4:00 PM-10:00 PM',
     attire: 'business casual',
   },
@@ -455,7 +455,7 @@ const RESTAURANT_DATA = [
     telephone: '(800) 548-8461',
     tags: 'Social,Food and Dining,Restaurants',
     website: 'https://www.sevenfeathers.com/',
-    genre: 'Coffee, Tea',
+    genre: 'Coffee,Tea',
     hours: 'Open Daily 12:00 AM-11:59 PM',
     attire: 'business casual',
   },
@@ -472,7 +472,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Entertainment,Music and Show Venues,Social,Food and Dining,Restaurants,American',
     website: 'http://www.nashvillesymphony.org',
-    genre: 'Cafe, International, Sandwiches, Vegetarian, American',
+    genre: 'Cafe,International,Sandwiches,Vegetarian,American',
     hours: 'Mon-Fri 10:00 AM-6:00 PM; Sat 10:00 AM-2:00 PM',
     attire: 'business casual',
   },
@@ -505,7 +505,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,American,Social,Food and Dining,Restaurants,French,Social,Food and Dining,Restaurants,International',
     website: 'http://www.chathamsplace.com',
-    genre: 'American, Traditional, Continental, European, Italian',
+    genre: 'American,Traditional,Continental,European,Italian',
     hours: 'Open Daily 5:30 PM-10:00 PM',
     attire: 'business casual',
   },
@@ -522,7 +522,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Entertainment,Music and Show Venues,Social,Food and Dining,Restaurants',
     website: 'http://www.guthrietheater.org',
-    genre: 'American, Traditional, Cafe, Coffee',
+    genre: 'American,Traditional,Cafe,Coffee',
     hours: 'Open Daily 8:00 AM-8:00 PM',
     attire: 'casual',
   },
@@ -538,7 +538,7 @@ const RESTAURANT_DATA = [
     telephone: '(434) 296-5661',
     tags: 'Social,Food and Dining,Restaurants,American',
     website: 'http://www.farmingtoncc.com',
-    genre: 'Grill, American',
+    genre: 'Grill,American',
     hours: 'Mon-Fri 9:00 AM-5:00 PM',
     attire: 'formal',
   },
@@ -555,7 +555,7 @@ const RESTAURANT_DATA = [
     tags: 'Social,Food and Dining,Restaurants',
     website:
       'https://disneyworld.disney.go.com/dining/grand-floridian-resort-and-spa/victoria-and-alberts/?CMP=OKC-wdw_dining_pl_187',
-    genre: 'American, French, Contemporary, British, Irish',
+    genre: 'American,French,Contemporary,British,Irish',
     hours: 'Open Daily 5:30 PM-7:30 PM',
     attire: 'smart casual',
   },
@@ -572,7 +572,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,Italian,Social,Food and Dining,Restaurants,Seafood,Social,Food and Dining,Restaurants,French',
     website: 'http://www.tonyshouston.com',
-    genre: 'Italian, European, French, American, Contemporary',
+    genre: 'Italian,European,French,American,Contemporary',
     hours:
       'Mon-Thu 11:00 AM-10:00 PM; Fri 11:00 AM-11:59 PM; Sat 6:00 PM-11:59 PM',
     attire: 'business casual',
@@ -606,7 +606,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,American,Social,Food and Dining,Restaurants,French,Social,Bars',
     website: 'http://www.gypsyapplebistro.com',
-    genre: 'Bistro, French, American, Coffee, Fusion',
+    genre: 'Bistro,French,American,Coffee,Fusion',
     hours: 'Thu-Sun 5:00 PM-9:00 PM',
     attire: 'business casual',
   },
@@ -623,7 +623,7 @@ const RESTAURANT_DATA = [
     tags:
       'Social,Food and Dining,Restaurants,American,Social,Food and Dining,Restaurants,French,Social,Food and Dining,Restaurants,Seafood',
     website: 'http://www.restaurantnicholas.com',
-    genre: 'American, Contemporary, Traditional, Seafood, Vegetarian',
+    genre: 'American,Contemporary,Traditional,Seafood,Vegetarian',
     hours:
       'Tue-Thu 5:30 PM-9:30 PM; Fri-Sat 5:30 PM-10:30 PM; Sun 5:30 PM-9:30 PM',
     attire: 'business casual',

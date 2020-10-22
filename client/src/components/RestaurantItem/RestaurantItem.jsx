@@ -13,7 +13,7 @@ const RestaurantItem = ({
       <td>{city}</td>
       <td>{state}</td>
       <td>{telephone}</td>
-      <td>{genre}</td>
+      <td>{genre.split(',').join(', ')}</td>
     </tr>
   </tbody>
 );
