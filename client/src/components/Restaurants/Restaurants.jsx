@@ -4,14 +4,14 @@ import React from 'react';
 
 import './Restaurants.scss';
 
-const Restaurants = ({ states, genres, filterStateHandler }) => (
+const Restaurants = ({ states, genres, filterHandler }) => (
   <thead>
     <tr>
       <th>Name</th>
       <th>City</th>
       <th>
         <label>State &nbsp;</label>
-        <select onChange={(e) => filterStateHandler(e.target.value)}>
+        <select onChange={(e) => filterHandler(e.target.value)}>
           <option value="all">All States</option>
           {states.map((state, idx) => (
             <option key={idx} value={state}>
@@ -23,8 +23,7 @@ const Restaurants = ({ states, genres, filterStateHandler }) => (
       <th>Telephone</th>
       <th>
         <label>Genre &nbsp;</label>
-        <select onChange={(e) => filterStateHandler(null, e.target.value)}>
-          {console.log('GENRES: ', genres)}
+        <select onChange={(e) => filterHandler(null, e.target.value)}>
           <option value="all">All Genres</option>
           {genres.map((genre, idx) => (
             <option key={idx} value={genre}>

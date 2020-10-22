@@ -1,4 +1,4 @@
-const RESTAURANT_DATA = [
+const restaurantData = [
   {
     id: 'f223fdd0-4adc-423e-9747-980a66c256ca',
     name: 'Old Hickory Steakhouse',
@@ -646,4 +646,4 @@ const RESTAURANT_DATA = [
   },
 ];
 
-export default RESTAURANT_DATA;
+module.exports = restaurantData;
