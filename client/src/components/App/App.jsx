@@ -7,6 +7,7 @@ import uniq from 'lodash.uniq';
 
 import Restaurants from '../Restaurants/Restaurants';
 import RestaurantItem from '../RestaurantItem/RestaurantItem';
+import SearchBox from '../SearchBox/SearchBox';
 
 import './App.scss';
 
@@ -18,13 +19,7 @@ const App = () => {
   const [genreCategories, setGenreCategories] = useState('all');
   // eslint-disable-next-line prefer-const
   let [filteredRestaurantData, setFilteredRestaurantData] = useState([]);
-
-  const states = uniq(restaurantData.map(({ state }) => state));
-  const filteredGenreData = [];
-  restaurantData
-    .slice()
-    .map(({ genre }) => filteredGenreData.push(genre.split(',')));
-  const genres = uniq(filteredGenreData.join(',').split(','));
+  const [searchField, setSearchField] = useState('');
 
   useEffect(() => {
     Axios.get('/restaurantData')
@@ -36,11 +31,18 @@ const App = () => {
         setIsLoaded(true);
         setErr(err);
       });
-  }, []);
+  }, [filterRestaurants, filteredRestaurantData]);
+
+  const states = uniq(restaurantData.map(({ state }) => state));
+  const filteredGenreData = [];
+  restaurantData
+    .slice()
+    .map(({ genre }) => filteredGenreData.push(genre.split(',')));
+  const genres = uniq(filteredGenreData.join(',').split(','));
 
   const filterHandler = (filterState, filterGenre) => {
     filteredRestaurantData = [];
-    restaurantData.map((restaurant) => {
+    filterRestaurants.map((restaurant) => {
       if (
         restaurant.state.includes(filterState)
         || restaurant.genre.includes(filterGenre)
@@ -54,17 +56,33 @@ const App = () => {
     setFilteredRestaurantData(filteredRestaurantData);
   };
 
+  const handleSearchChange = (e) => setSearchField(e.target.value);
+
+  const filterRestaurants = restaurantData.filter(
+    ({ name, city, genre }) => name.toLowerCase().includes(searchField.toLowerCase())
+      || city.toLowerCase().includes(searchField.toLowerCase())
+      || genre.toLowerCase().includes(searchField.toLowerCase()),
+  );
+
   return (
-    <div>
+    <div className="App">
+      <SearchBox
+        placeholder="Search by name, city, or genre"
+        handleSearchChange={handleSearchChange}
+      />
       <table>
-        <Restaurants states={states} genres={genres} filterHandler={filterHandler} />
+        <Restaurants
+          states={states}
+          genres={genres}
+          filterHandler={filterHandler}
+        />
         {filteredRestaurantData.length
           ? filteredRestaurantData
             .sort((a, b) => a.name.localeCompare(b.name))
             .map((restaurant) => (
               <RestaurantItem key={restaurant.id} restaurant={restaurant} />
             ))
-          : restaurantData
+          : filterRestaurants
             .sort((a, b) => a.name.localeCompare(b.name))
             .map((restaurant) => (
               <RestaurantItem key={restaurant.id} restaurant={restaurant} />
