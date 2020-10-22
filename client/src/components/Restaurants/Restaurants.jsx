@@ -4,7 +4,7 @@ import React from 'react';
 
 import './Restaurants.scss';
 
-const Restaurants = ({ states, filterStateHandler }) => (
+const Restaurants = ({ states, genres, filterStateHandler }) => (
   <thead>
     <tr>
       <th>Name</th>
@@ -21,7 +21,18 @@ const Restaurants = ({ states, filterStateHandler }) => (
         </select>
       </th>
       <th>Telephone</th>
-      <th>Genre &nbsp;</th>
+      <th>
+        <label>Genre &nbsp;</label>
+        <select onChange={(e) => filterStateHandler(null, e.target.value)}>
+          {console.log('GENRES: ', genres)}
+          <option value="all">All Genres</option>
+          {genres.map((genre, idx) => (
+            <option key={idx} value={genre}>
+              {genre}
+            </option>
+          ))}
+        </select>
+      </th>
     </tr>
   </thead>
 );
