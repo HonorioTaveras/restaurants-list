@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
@@ -15,6 +16,7 @@ const App = () => {
   const [err, setErr] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [restaurantData, setRestaurantData] = useState([]);
+  const [restaurantDataCopy, setRestaurantDataCopy] = useState([]);
   const [stateCategories, setStateCetegories] = useState('all');
   const [genreCategories, setGenreCategories] = useState('all');
   // eslint-disable-next-line prefer-const
@@ -22,16 +24,17 @@ const App = () => {
   const [searchField, setSearchField] = useState('');
 
   useEffect(() => {
-    Axios.get('/restaurantData')
-      .then((res) => {
+    Axios.get('/restaurantData').then(
+      (res) => {
         setIsLoaded(true);
         setRestaurantData(res.data);
       },
       (err) => {
         setIsLoaded(true);
         setErr(err);
-      });
-  }, [filterRestaurants, filteredRestaurantData]);
+      },
+    );
+  }, [SearchBox]);
 
   const states = uniq(restaurantData.map(({ state }) => state));
   const filteredGenreData = [];
@@ -42,7 +45,7 @@ const App = () => {
 
   const filterHandler = (filterState, filterGenre) => {
     filteredRestaurantData = [];
-    filterRestaurants.map((restaurant) => {
+    restaurantData.map((restaurant) => {
       if (
         restaurant.state.includes(filterState)
         || restaurant.genre.includes(filterGenre)
@@ -56,18 +59,29 @@ const App = () => {
     setFilteredRestaurantData(filteredRestaurantData);
   };
 
-  const handleSearchChange = (e) => setSearchField(e.target.value);
+  const filterRestaurants = restaurantData
+    .slice()
+    .filter(
+      ({ name, city, genre }) => name.toLowerCase().includes(searchField.toLowerCase())
+        || city.toLowerCase().includes(searchField.toLowerCase())
+        || genre.toLowerCase().includes(searchField.toLowerCase()),
+    );
 
-  const filterRestaurants = restaurantData.filter(
-    ({ name, city, genre }) => name.toLowerCase().includes(searchField.toLowerCase())
-      || city.toLowerCase().includes(searchField.toLowerCase())
-      || genre.toLowerCase().includes(searchField.toLowerCase()),
-  );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setRestaurantDataCopy(filterRestaurants);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchField(e.target.value);
+  };
 
   return (
     <div className="App">
       <SearchBox
         placeholder="Search by name, city, or genre"
+        searchField={searchField}
+        handleSubmit={handleSubmit}
         handleSearchChange={handleSearchChange}
       />
       <table>
@@ -82,11 +96,17 @@ const App = () => {
             .map((restaurant) => (
               <RestaurantItem key={restaurant.id} restaurant={restaurant} />
             ))
-          : filterRestaurants
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((restaurant) => (
-              <RestaurantItem key={restaurant.id} restaurant={restaurant} />
-            ))}
+          : restaurantDataCopy.length
+            ? restaurantDataCopy
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((restaurant) => (
+                <RestaurantItem key={restaurant.id} restaurant={restaurant} />
+              ))
+            : restaurantData
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((restaurant) => (
+                <RestaurantItem key={restaurant.id} restaurant={restaurant} />
+              ))}
       </table>
     </div>
   );

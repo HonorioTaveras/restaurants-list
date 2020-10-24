@@ -1,15 +1,22 @@
 import React from 'react';
 
+import CustomButton from '../CustomButton/CustomButton';
+
 import './SearchBox.scss';
 
-const SearchBox = ({ placeholder, handleSearchChange }) => (
+const SearchBox = ({ placeholder, handleSearchChange, handleSubmit }) => (
   <div>
-    <input
-      className="search"
-      type="search"
-      placeholder={placeholder}
-      onChange={handleSearchChange}
-    />
+    <div className="input-wrapper">
+      <form onSubmit={handleSubmit}>
+        <input
+          className="search"
+          type="search"
+          placeholder={placeholder}
+          onChange={handleSearchChange}
+        />
+        <CustomButton type="submit">Search</CustomButton>
+      </form>
+    </div>
   </div>
 );
 
