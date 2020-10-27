@@ -1,0 +1,20 @@
+.input-wrapper {
+  text-align: center;
+  display: inline-block;
+  .search {
+    -webkit-appearance: none;
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin: 25px auto;
+    border-collapse: collapse;
+    border: 1px solid #eee;
+    border-bottom: 2px solid #fda520;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05),
+      0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
+    outline: none;
+    padding: 10px;
+    min-width: 165px;
+    line-height: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}

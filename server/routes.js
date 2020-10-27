@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const path = require('path');
+const restaurantData = require('./restaurantData');
 
-router.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+router.get('/restaurantData', (req, res) => {
+  res.status(200).send(restaurantData);
 });
 
 module.exports = router;
