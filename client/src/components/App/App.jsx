@@ -23,6 +23,8 @@ const App = () => {
   // eslint-disable-next-line prefer-const
   let [filteredRestaurantData, setFilteredRestaurantData] = useState([]);
   const [searchField, setSearchField] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [restaurantsPerPage, setRestaurantsPerPage] = useState(10);
 
   /////////////////////////////////////////////////////////////
   /////////// DATA FFETCHING & LIFECYCLE MANAGEMENT //////////
@@ -52,7 +54,10 @@ const App = () => {
     .map(({ genre }) => filteredGenreData.push(genre.split(',')));
   const genres = uniq(filteredGenreData.join(',').split(','));
 
-  const filterHandler = (filterState = stateCategories, filterGenre = genreCategories) => {
+  const filterHandler = (
+    filterState = stateCategories,
+    filterGenre = genreCategories,
+  ) => {
     filteredRestaurantData = [];
     restaurantData.map((restaurant) => {
       if (
@@ -79,11 +84,11 @@ const App = () => {
 
     if (searchField.length !== 0) {
       currentRestaurantsList = restaurantData;
-      newRestaurantsList = currentRestaurantsList.filter(({ name, city, genre }) => (
-        name.toLowerCase().includes(searchField.toLowerCase())
-        || city.toLowerCase().includes(searchField.toLowerCase())
-        || genre.toLowerCase().includes(searchField.toLowerCase())
-      ));
+      newRestaurantsList = currentRestaurantsList.filter(
+        ({ name, city, genre }) => name.toLowerCase().includes(searchField.toLowerCase())
+          || city.toLowerCase().includes(searchField.toLowerCase())
+          || genre.toLowerCase().includes(searchField.toLowerCase()),
+      );
     } else {
       newRestaurantsList = restaurantData;
     }
@@ -94,6 +99,21 @@ const App = () => {
   const handleSearchChange = (e) => {
     setSearchField(e.target.value);
   };
+
+  //////////////////////////////////////////////////////////////
+  ////////////////////// PAGINATION ///////////////////////////
+  ////////////////////////////////////////////////////////////
+
+  const indexOfLastRestaurant = currentPage * restaurantsPerPage;
+  const indexOfFirstRestaurant = indexOfLastRestaurant - restaurantsPerPage;
+  const currentRestaurants = restaurantData.slice(
+    indexOfFirstRestaurant,
+    indexOfLastRestaurant,
+  );
+  const currentFilteredRestaurants = filteredRestaurantData.slice(
+    indexOfFirstRestaurant,
+    indexOfLastRestaurant,
+  );
 
   return (
     <div className="App">
@@ -113,12 +133,12 @@ const App = () => {
           filterHandler={filterHandler}
         />
         {filteredRestaurantData.length
-          ? filteredRestaurantData
+          ? currentFilteredRestaurants
             .sort((a, b) => a.name.localeCompare(b.name))
             .map((restaurant) => (
               <RestaurantItem key={restaurant.id} restaurant={restaurant} />
             ))
-          : restaurantData
+          : currentRestaurants
             .sort((a, b) => a.name.localeCompare(b.name))
             .map((restaurant) => (
               <RestaurantItem key={restaurant.id} restaurant={restaurant} />
