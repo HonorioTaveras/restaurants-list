@@ -1,3 +1,4 @@
+/* eslint-disable spaced-comment */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
@@ -23,6 +24,10 @@ const App = () => {
   let [filteredRestaurantData, setFilteredRestaurantData] = useState([]);
   const [searchField, setSearchField] = useState('');
 
+  /////////////////////////////////////////////////////////////
+  /////////// DATA FFETCHING & LIFECYCLE MANAGEMENT //////////
+  ///////////////////////////////////////////////////////////
+
   useEffect(() => {
     Axios.get('/restaurantData').then(
       (res) => {
@@ -34,7 +39,11 @@ const App = () => {
         setErr(err);
       },
     );
-  }, [SearchBox]);
+  }, [filteredRestaurantData]);
+
+  /////////////////////////////////////////////////////////////
+  ///////////////// STATE & GENRE FILTERS ////////////////////
+  ///////////////////////////////////////////////////////////
 
   const states = uniq(restaurantData.map(({ state }) => state));
   const filteredGenreData = [];
@@ -43,7 +52,7 @@ const App = () => {
     .map(({ genre }) => filteredGenreData.push(genre.split(',')));
   const genres = uniq(filteredGenreData.join(',').split(','));
 
-  const filterHandler = (filterState, filterGenre) => {
+  const filterHandler = (filterState = stateCategories, filterGenre = genreCategories) => {
     filteredRestaurantData = [];
     restaurantData.map((restaurant) => {
       if (
@@ -59,17 +68,27 @@ const App = () => {
     setFilteredRestaurantData(filteredRestaurantData);
   };
 
-  const filterRestaurants = restaurantData
-    .slice()
-    .filter(
-      ({ name, city, genre }) => name.toLowerCase().includes(searchField.toLowerCase())
-        || city.toLowerCase().includes(searchField.toLowerCase())
-        || genre.toLowerCase().includes(searchField.toLowerCase()),
-    );
+  //////////////////////////////////////////////////////////////
+  ///////////////// SEARCH BAR HANDLERS ///////////////////////
+  ////////////////////////////////////////////////////////////
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setRestaurantDataCopy(filterRestaurants);
+    let currentRestaurantsList = [];
+    let newRestaurantsList = [];
+
+    if (searchField.length !== 0) {
+      currentRestaurantsList = restaurantData;
+      newRestaurantsList = currentRestaurantsList.filter(({ name, city, genre }) => (
+        name.toLowerCase().includes(searchField.toLowerCase())
+        || city.toLowerCase().includes(searchField.toLowerCase())
+        || genre.toLowerCase().includes(searchField.toLowerCase())
+      ));
+    } else {
+      newRestaurantsList = restaurantData;
+    }
+
+    setFilteredRestaurantData(newRestaurantsList);
   };
 
   const handleSearchChange = (e) => {
@@ -79,6 +98,7 @@ const App = () => {
   return (
     <div className="App">
       <SearchBox
+        restaurantData={restaurantData}
         placeholder="Search by name, city, or genre"
         searchField={searchField}
         handleSubmit={handleSubmit}
@@ -87,7 +107,9 @@ const App = () => {
       <table>
         <Restaurants
           states={states}
+          stateCategories={stateCategories}
           genres={genres}
+          genreCategories={genreCategories}
           filterHandler={filterHandler}
         />
         {filteredRestaurantData.length
@@ -96,17 +118,11 @@ const App = () => {
             .map((restaurant) => (
               <RestaurantItem key={restaurant.id} restaurant={restaurant} />
             ))
-          : restaurantDataCopy.length
-            ? restaurantDataCopy
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map((restaurant) => (
-                <RestaurantItem key={restaurant.id} restaurant={restaurant} />
-              ))
-            : restaurantData
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map((restaurant) => (
-                <RestaurantItem key={restaurant.id} restaurant={restaurant} />
-              ))}
+          : restaurantData
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((restaurant) => (
+              <RestaurantItem key={restaurant.id} restaurant={restaurant} />
+            ))}
       </table>
     </div>
   );

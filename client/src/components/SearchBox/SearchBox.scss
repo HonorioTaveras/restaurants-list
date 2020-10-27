@@ -1,5 +1,6 @@
 .input-wrapper {
   text-align: center;
+  display: inline-block;
   .search {
     -webkit-appearance: none;
     font-family: 'Open Sans Condensed', sans-serif;
@@ -11,10 +12,9 @@
       0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
     outline: none;
     padding: 10px;
-    width: 200px;
+    min-width: 165px;
     line-height: 30px;
     margin-top: 20px;
     margin-bottom: 10px;
-    display: inline-block;
   }
 }
