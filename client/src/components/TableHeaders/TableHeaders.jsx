@@ -2,8 +2,6 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 
-import './TableHeaders.scss';
-
 const TableHeaders = ({
   states,
   stateCategories,
