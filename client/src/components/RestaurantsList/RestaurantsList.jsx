@@ -1,7 +1,13 @@
 import React from 'react';
 
-const RestaurantsList = () => (
-  <div>
+import RestaurantItem from '../RestaurantItem/RestaurantItem';
+
+const RestaurantsList = ({
+  filteredRestaurantData,
+  currentFilteredRestaurants,
+  currentRestaurants,
+}) => (
+  <>
     {filteredRestaurantData.length
       ? currentFilteredRestaurants
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -13,7 +19,7 @@ const RestaurantsList = () => (
         .map((restaurant) => (
           <RestaurantItem key={restaurant.id} restaurant={restaurant} />
         ))}
-  </div>
+  </>
 );
 
 export default RestaurantsList;
