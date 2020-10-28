@@ -23,7 +23,7 @@ const PaginateRestaurants = ({
 
   return (
     <div>
-      <Pagination className="">
+      <Pagination>
         <Pagination.First onClick={() => paginate(pageNumbers[0])} />
         <Pagination.Prev onClick={() => paginate(handlePrev)} />
         {pageNumbers.map((number) => (

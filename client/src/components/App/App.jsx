@@ -150,12 +150,14 @@ const App = () => {
               <RestaurantItem key={restaurant.id} restaurant={restaurant} />
             ))}
       </table>
-      <PaginateRestaurants
-        restaurantsPerPage={restaurantsPerPage}
-        totalRestaurants={handleTotalRestaurants}
-        paginate={paginate}
-        currentPage={currentPage}
-      />
+      <div className="paginate-restaurants">
+        <PaginateRestaurants
+          restaurantsPerPage={restaurantsPerPage}
+          totalRestaurants={handleTotalRestaurants}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
+      </div>
     </div>
   );
 };
