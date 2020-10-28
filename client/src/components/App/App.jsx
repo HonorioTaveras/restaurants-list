@@ -7,8 +7,10 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import uniq from 'lodash.uniq';
 
-import Restaurants from '../Restaurants/Restaurants';
-import RestaurantItem from '../RestaurantItem/RestaurantItem';
+import Spinner from 'react-bootstrap/Spinner';
+
+import TableHeaders from '../TableHeaders/TableHeaders';
+import RestaurantsList from '../RestaurantsList/RestaurantsList';
 import SearchBox from '../SearchBox/SearchBox';
 import PaginateRestaurants from '../PaginateRestaurants/PaginateRestaurants';
 
@@ -42,7 +44,7 @@ const App = () => {
         setErr(err);
       },
     );
-  }, [filteredRestaurantData]);
+  }, []);
 
   /////////////////////////////////////////////////////////////
   ///////////////// STATE & GENRE FILTERS ////////////////////
@@ -111,6 +113,7 @@ const App = () => {
     indexOfFirstRestaurant,
     indexOfLastRestaurant,
   );
+
   const currentFilteredRestaurants = filteredRestaurantData.slice(
     indexOfFirstRestaurant,
     indexOfLastRestaurant,
@@ -121,7 +124,21 @@ const App = () => {
     ? filteredRestaurantData.length
     : restaurantData.length;
 
-  return (
+  if (err) {
+    return (
+      <div>
+        Error:
+        {err.message}
+      </div>
+    );
+  } if (!isLoaded) {
+    return (
+      <div className="spinner">
+        <Spinner animation="border" role="status" />
+        <div>Loading...</div>
+      </div>
+    );
+  } return (
     <div className="App">
       <SearchBox
         restaurantData={restaurantData}
@@ -131,24 +148,18 @@ const App = () => {
         handleSearchChange={handleSearchChange}
       />
       <table>
-        <Restaurants
+        <TableHeaders
           states={states}
           stateCategories={stateCategories}
           genres={genres}
           genreCategories={genreCategories}
           filterHandler={filterHandler}
         />
-        {filteredRestaurantData.length
-          ? currentFilteredRestaurants
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((restaurant) => (
-              <RestaurantItem key={restaurant.id} restaurant={restaurant} />
-            ))
-          : currentRestaurants
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((restaurant) => (
-              <RestaurantItem key={restaurant.id} restaurant={restaurant} />
-            ))}
+        <RestaurantsList
+          filteredRestaurantData={filteredRestaurantData}
+          currentFilteredRestaurants={currentFilteredRestaurants}
+          currentRestaurants={currentRestaurants}
+        />
       </table>
       <div className="paginate-restaurants">
         <PaginateRestaurants
