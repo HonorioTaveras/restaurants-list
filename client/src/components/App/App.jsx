@@ -10,6 +10,7 @@ import uniq from 'lodash.uniq';
 import Restaurants from '../Restaurants/Restaurants';
 import RestaurantItem from '../RestaurantItem/RestaurantItem';
 import SearchBox from '../SearchBox/SearchBox';
+import PaginateRestaurants from '../PaginateRestaurants/PaginateRestaurants';
 
 import './App.scss';
 
@@ -24,7 +25,7 @@ const App = () => {
   let [filteredRestaurantData, setFilteredRestaurantData] = useState([]);
   const [searchField, setSearchField] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [restaurantsPerPage, setRestaurantsPerPage] = useState(10);
+  const [restaurantsPerPage] = useState(10);
 
   /////////////////////////////////////////////////////////////
   /////////// DATA FFETCHING & LIFECYCLE MANAGEMENT //////////
@@ -115,6 +116,11 @@ const App = () => {
     indexOfLastRestaurant,
   );
 
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const handleTotalRestaurants = filteredRestaurantData.length
+    ? filteredRestaurantData.length
+    : restaurantData.length;
+
   return (
     <div className="App">
       <SearchBox
@@ -144,6 +150,12 @@ const App = () => {
               <RestaurantItem key={restaurant.id} restaurant={restaurant} />
             ))}
       </table>
+      <PaginateRestaurants
+        restaurantsPerPage={restaurantsPerPage}
+        totalRestaurants={handleTotalRestaurants}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

@@ -5,7 +5,6 @@ import './CustomButton.scss';
 
 const CustomButton = ({
   children,
-  isGoogleSignIn,
   inverted,
   ...otherProps
 }) => (
