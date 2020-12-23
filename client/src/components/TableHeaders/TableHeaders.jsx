@@ -4,10 +4,9 @@ import React from 'react';
 
 const TableHeaders = ({
   states,
-  stateCategories,
   genres,
-  genreCategories,
-  filterHandler,
+  filterStatesHandler,
+  filterGenresHandler,
 }) => (
   <thead>
     <tr>
@@ -15,9 +14,7 @@ const TableHeaders = ({
       <th>City</th>
       <th>
         <label>State &nbsp;</label>
-        <select
-          onChange={(e) => filterHandler(e.target.value, genreCategories)}
-        >
+        <select onChange={(e) => filterStatesHandler(e.target.value)}>
           <option value="all">All States</option>
           {states.map((state, idx) => (
             <option key={`state: ${idx + 1}`} value={state}>
@@ -29,9 +26,7 @@ const TableHeaders = ({
       <th>Telephone</th>
       <th>
         <label>Genre &nbsp;</label>
-        <select
-          onChange={(e) => filterHandler(stateCategories, e.target.value)}
-        >
+        <select onChange={(e) => filterGenresHandler(e.target.value)}>
           <option value="all">All Genres</option>
           {genres.map((genre, idx) => (
             <option key={`genre: ${idx + 1}`} value={genre}>
