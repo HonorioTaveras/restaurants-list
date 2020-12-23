@@ -24,7 +24,7 @@ const App = () => {
   const [stateCategories, setStateCetegories] = useState('all');
   const [genreCategories, setGenreCategories] = useState('all');
   // eslint-disable-next-line prefer-const
-  let [filteredRestaurantData, setFilteredRestaurantData] = useState([]);
+  const [filteredRestaurantData, setFilteredRestaurantData] = useState([]);
   const [searchField, setSearchField] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [restaurantsPerPage] = useState(10);
@@ -60,24 +60,34 @@ const App = () => {
   // console.log(genres);
 
   const filterHandler = (
-    filterState = stateCategories,
-    filterGenre = genreCategories,
+    filterState,
+    filterGenre,
   ) => {
-    filteredRestaurantData = [];
+    const tempFilteredRestaurantData = [];
 
     restaurantData.map((restaurant) => {
       if (
         restaurant.state.includes(filterState)
         || restaurant.genre.includes(filterGenre)
       ) {
-        filteredRestaurantData.push(restaurant);
+        tempFilteredRestaurantData.push(restaurant);
       }
       return filteredRestaurantData;
     });
     setStateCetegories(filterState);
     setGenreCategories(filterGenre);
-    setFilteredRestaurantData(filteredRestaurantData);
+    setFilteredRestaurantData(tempFilteredRestaurantData);
   };
+
+  // const filterStates = (filterState = stateCategories) => {
+  //   filteredRestaurantData = [];
+
+
+  // };
+
+  // const filterGenres = () => {
+
+  // };
 
   //////////////////////////////////////////////////////////////
   ///////////////// SEARCH BAR HANDLERS ///////////////////////
