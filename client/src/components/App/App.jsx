@@ -55,13 +55,16 @@ const App = () => {
   restaurantData
     .slice()
     .map(({ genre }) => filteredGenreData.push(genre.split(',')));
-  const genres = uniq(filteredGenreData.join(',').split(','));
+  // const genres = uniq(filteredGenreData.join(',').split(','));
+  const genres = uniq(filteredGenreData.flat());
+  // console.log(genres);
 
   const filterHandler = (
     filterState = stateCategories,
     filterGenre = genreCategories,
   ) => {
     filteredRestaurantData = [];
+
     restaurantData.map((restaurant) => {
       if (
         restaurant.state.includes(filterState)
