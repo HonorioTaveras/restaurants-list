@@ -23,7 +23,6 @@ const App = () => {
   const [restaurantDataCopy, setRestaurantDataCopy] = useState([]);
   const [stateCategories, setStateCetegories] = useState('all');
   const [genreCategories, setGenreCategories] = useState('all');
-  // eslint-disable-next-line prefer-const
   const [filteredRestaurantData, setFilteredRestaurantData] = useState([]);
   const [searchField, setSearchField] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -59,35 +58,45 @@ const App = () => {
   const genres = uniq(filteredGenreData.flat());
   // console.log(genres);
 
-  const filterHandler = (
-    filterState,
-    filterGenre,
-  ) => {
+  const filterStatesHandler = (filterState) => {
     const tempFilteredRestaurantData = [];
 
-    restaurantData.map((restaurant) => {
+    restaurantData.forEach((restaurant) => {
+      if (genreCategories === 'all') {
+        if (restaurant.state.includes(filterState)) {
+          tempFilteredRestaurantData.push(restaurant);
+        }
+      }
       if (
         restaurant.state.includes(filterState)
-        || restaurant.genre.includes(filterGenre)
+        && restaurant.genre.includes(genreCategories)
       ) {
         tempFilteredRestaurantData.push(restaurant);
       }
-      return filteredRestaurantData;
     });
     setStateCetegories(filterState);
-    setGenreCategories(filterGenre);
     setFilteredRestaurantData(tempFilteredRestaurantData);
   };
 
-  // const filterStates = (filterState = stateCategories) => {
-  //   filteredRestaurantData = [];
+  const filterGenresHandler = (filterGenre) => {
+    const tempFilteredRestaurantData = [];
 
-
-  // };
-
-  // const filterGenres = () => {
-
-  // };
+    restaurantData.forEach((restaurant) => {
+      if (stateCategories === 'all') {
+        if (restaurant.genre.includes(filterGenre)) {
+          tempFilteredRestaurantData.push(restaurant);
+        }
+      }
+      if (
+        restaurant.genre.includes(filterGenre)
+        && restaurant.state.includes(stateCategories)
+      ) {
+        tempFilteredRestaurantData.push(restaurant);
+      }
+    });
+    setGenreCategories(filterGenre);
+    setFilteredRestaurantData(tempFilteredRestaurantData);
+  };
 
   //////////////////////////////////////////////////////////////
   ///////////////// SEARCH BAR HANDLERS ///////////////////////
@@ -144,14 +153,16 @@ const App = () => {
         {err.message}
       </div>
     );
-  } if (!isLoaded) {
+  }
+  if (!isLoaded) {
     return (
       <div className="spinner">
         <Spinner animation="border" role="status" />
         <div>Loading...</div>
       </div>
     );
-  } return (
+  }
+  return (
     <div className="App">
       <SearchBox
         restaurantData={restaurantData}
@@ -166,12 +177,15 @@ const App = () => {
           stateCategories={stateCategories}
           genres={genres}
           genreCategories={genreCategories}
-          filterHandler={filterHandler}
+          filterStatesHandler={filterStatesHandler}
+          filterGenresHandler={filterGenresHandler}
         />
         <RestaurantsList
           filteredRestaurantData={filteredRestaurantData}
           currentFilteredRestaurants={currentFilteredRestaurants}
           currentRestaurants={currentRestaurants}
+          stateCategories={stateCategories}
+          genreCategories={genreCategories}
         />
       </table>
       <div className="paginate-restaurants">
